@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"content="width=device-width,initial-scale=1.0">
+<title>College Admission Registration System</title>
+<link rel="stylesheet"href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+</head>
+<body>
+<a href="../../project-detail.html?id=admission-system" style="position:fixed;top:18px;left:18px;z-index:999;background:#0f172a;color:#fff;padding:10px 18px;border-radius:999px;font-family:sans-serif;font-size:13px;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,0.25);">← Back to Portfolio</a>
+<div class="container">
+<div class="admission-card">
+<div class="header">
+<div class="logo">
+GK
+</div>
+<h1>College Admission Registration System</h1>
+<p>
+Welcome! Please complete the admission form carefully.
+Fields marked with <span>*</span> are mandatory.
+</p>
+</div>
+<form id="studentForm">
+<div>
+<div class="section-title">
+<h2>Personal Information</h2>
+</div>
+<div class="form-grid">
+<div class="input-group">
+<label for="firstName">
+First Name<span>*</span>
+</label>
+<input
+type="text"
+id="firstName"
+name="first_name"
+placeholder="Enter Your first name"
+required>
+</div>
+<div class="input-group">
+<label for="lastName">
+Last Name<span>*</span>
+</label>
+<input
+type="text"
+id="lastName"
+name="last_name"
+placeholder="Enter your last name">
+</div>
+<div class="input-group">
+<label for="dob">
+ Date of Birth<span>*</span>
+</label>
+<input
+type="date"
+id="dob"
+name="dob"
+required>
+</div>
+<div class="input-group">
+<label for="age">
+  Age
+</label>
+<input
+type="number"
+id="age"
+name="age"
+placeholder="Auto Calculated"
+readonly>
+</div>
+<div class="input-group">
+<label>
+Gender<span>*</span>
+</label>
+<div class="radio-group">
+<label>
+<input
+type="radio"
+name="gender"
+value="Male"
+required>
+Male
+</label>
+<label>
+<input
+type="radio"
+name="gender"
+value="Female">
+Female
+</label>
+<label>
+<input
+type="radio"
+name="gender"
+value="Others">
+Others
+</label>
+</div>
+</div>
+<div class="input-group">
+<label for="bloodGroup">
+Blood Group<span>*</span>
+</label>
+<select
+id="bloodGroup"
+name="blood_group"
+required>
+<option value="">
+Select Blood Group
+</option>
+<option>A+</option>
+<option>A-</option>
+<option>B+</option>
+<option>B-</option>
+<option>AB+</option>
+<option>AB-</option>
+<option>O+</option>
+<option>O-</option>
+</select>
+</div>
+<div class="input-group">
+<label for="nationality">
+Nationality<span>*</span>
+</label>
+<input
+type="text"
+id="nationality"
+name="nationality"
+placeholder="Enter your nationality"
+value="Indian"
+required>
+</div>
+<div class="input-group">
+<label for="motherTongue">
+ Mother Tongue<span>*</span>
+</label>
+<input
+type="text"
+id="motherTongue"
+name="mother_tongue"
+placeholder="Enter your mother tongue"
+required>
+</div>
+<div class="input-group">
+<label  for="religion">
+Religion<span>*</span>
+</label>
+<select
+id="religion"
+name="religion"
+required>
+<option value="">Select Religion</option>
+<option>Hindu</option>
+<option>Muslim</option>
+<option>Christian</option>
+<option>Sikh</option>
+<option>Buddhist</option>
+<option>Jain</option>
+<option>Other</option>
+</select>
+</div>
+<div class="input-group">
+<label for="category">
+Category<span>*</span>
+</label>
+<select
+id="category"
+name="category"
+required>
+<option value="">Select Category</option>
+<option>General</option>
+<option>OBC</option>
+<option>MBC</option>
+<option>SC</option>
+<option>ST</option>
+<option>EWS</option>
+</select>
+</div>
+<div class="input-group">
+<label for="aadhaar">
+Aadhaar Number
+</label>
+<input
+type="text"
+id="aadhaar"
+name="aadhaar"
+maxlength="12"
+placeholder="Enter 12-digit Aadhaar Number">
+</div>
+<div class="input-group">
+<label for="photo">
+ Passport Size Photo<span>*</span>
+</label>
+<input
+type="file"
+id="photo"
+name="photo"
+accept=".jpg,.jpeg,.png"
+required>
+</div>
+<div class="input-group">
+<label for="phone">
+Mobile Number<span>*</span>
+</label>
+<input
+type="tel"
+id="phone"
+name="phone"
+maxlength="10"
+placeholder="Enter Mobile Number"
+required>
+</div>
+<div class="input-group">
+<label for="altPhone">
+Alternate Mobile Number
+</label>
+<input
+type="tel"
+id="altPhone"
+name="alt_phone"
+maxlength="10"
+placeholder="Enter Alternate Mobile Number">
+</div>
+<div class="input-group">
+<label for="email">
+ Email Address<span>*</span>
+</label>
+<input
+type="email"
+id="email"
+name="email"
+placeholder="Enter Email Address"
+required>
+</div>
+<div class="input-group">
+    <label for="fatherName">
+        Father Name<span>*</span>
+    </label>
+    <input
+        type="text"
+        id="fatherName"
+        name="father_name"
+        placeholder="Enter Father's Name"
+        required>
+</div>
+<div class="input-group">
+    <label for="fatherOccupation">
+        Father Occupation<span>*</span>
+    </label>
+    <input
+        type="text"
+        id="fatherOccupation"
+        name="father_occupation"
+        placeholder="Enter Father's Occupation"
+        required>
+</div>
+<div class="input-group">
+    <label for="motherName">
+        Mother Name<span>*</span>
+    </label>
+    <input
+        type="text"
+        id="motherName"
+        name="mother_name"
+        placeholder="Enter Mother's Name"
+        required>
+</div>
+<div class="input-group">
+    <label for="motherOccupation">
+        Mother Occupation<span>*</span>
+    </label>
+    <input
+        type="text"
+        id="motherOccupation"
+        name="mother_occupation"
+        placeholder="Enter Mother's Occupation"
+        required>
+</div>
+<div class="input-group">
+    <label for="parentPhone">
+        Parent Mobile Number<span>*</span>
+    </label>
+    <input
+        type="tel"
+        id="parentPhone"
+        name="parent_phone"
+        maxlength="10"
+        placeholder="Enter Parent Mobile Number"
+        required>
+</div>
+<div class="input-group full-width">
+<label for="address">
+Permanent Address<span>*</span>
+</label>
+<textarea
+id="address"
+name="address"
+rows="4"
+placeholder="Enter your complete address"
+required></textarea>
+</div>
+<div class="input-group">
+<label for="city">
+City<span>*</span>
+</label>
+<input
+type="text"
+id="city"
+name="city"
+placeholder="Enter City"
+required>
+</div>
+<div class="input-group">
+<label for="state">
+State<span>*</span>
+</label>
+<input
+type="text"
+id="state"
+name="state"
+placeholder="Enter State"
+required>
+</div>
+<div class="input-group">
+<label for="pincode">
+PIN Code<span>*</span>
+</label>
+<input
+type="text"
+id="pincode"
+name="pincode"
+maxlength="6"
+placeholder="Enter PIN Code"
+required>
+</div>
+</div>
+<div>
+<div class="section-title">
+<h2> Academic Details</h2>
+</div>
+<div class="form-grid">
+<div class="input-group">
+<label for="sslc_School">
+SSLC School Name<span>*</span>
+</label>
+<input
+type="text"
+id="sslcSchool"
+name="sslc_school"
+placeholder="Enter SSLC School Name"
+required>
+</div>
+<div class="input-group">
+<label for="hscSchool">
+HSC School Name<span>*</span>
+</label>
+<input
+type="text"
+id="hscSchool"
+name="hsc_school"
+placeholder="Enter HSC School Name"
+required>
+</div>
+<div class="input-group">
+<label for="board">
+Board of Education<span>*</span>
+</label>
+<select
+id="board"
+name="board"
+required>
+<option value="">Select Board</option>
+<option>State Board</option>
+<option>CBSE</option>
+<option>ICSE</option>
+<option>Other</option>
+</select>
+</div>
+<div class="input-group">
+<label for="group">
+HSC  Group<span>*</span>
+</label>
+<select
+id="group"
+name="hsc_group"
+required>
+<option value="">Select Group</option>
+<option>Computer Science</option>
+<option>Biology</option>
+<option>Commerce</option>
+<option>Arts</option>
+</select>
+</div>
+<div class="input-group">
+<label for="year">
+Year of Passing<span>*</span>
+</label>
+<input
+type="number"
+id="year"
+name="year"
+placeholder="2026"
+required>
+</div>
+<div class="input-group">
+<label for="register">
+HSC Register Number<span>*</span>
+</label>
+<input
+type="text"
+id="register"
+name="register_number"
+placeholder="Enter Register Number"
+required>
+</div>
+<div class="input-group">
+<label for="maths">
+Mathematics Mark<span>*</span>
+</label>
+<input
+type="number"
+id="maths"
+name="maths"
+min="0"
+max="100"
+placeholder="Enter Mathematics Mark"
+required>
+</div>
+<div class="input-group">
+<label for="physics">
+Physics Mark<span>*</span>
+</label>
+<input
+type="number"
+id="physics"
+name="physics"
+min="0"
+max="100"
+placeholder="Enter Physics Mark"
+required>
+</div>
+<div class="input-group">
+<label for="chemistry">
+Chemistry / Computer Science Mark<span>*</span>
+</label>
+<input
+type="number"
+id="chemistry"
+name="chemistry"
+min="0"
+max="100"
+placeholder="Enter Chemistry / Computer Science Mark"
+required>
+</div>
+<div class="input-group">
+<label for="cutoff">
+Engineering Cut-Off
+</label>
+<input
+type="number"
+id="cutoff"
+name="cutoff"
+placeholder="Calculated Automatically"
+readonly>
+</div>
+</div>
+</div>
+<div>
+<div class="input-group">
+<label for="course">
+Preferred Course<span>*</span>
+</label>
+<select
+id="course"
+name="course"
+required>
+<option value="">Select Course</option>
+<option>B.Tech Information Technology</option>
+<option>B.Tech Computer Science Engineering</option>
+<option>B.Tech Artificial Intelligence & Data Science</option>
+<option>B.Tech Electronics & Communication Engineering</option>
+<option>B.Tech Electrical & Electronics Engineering</option>
+<option>B.Tech Mechanical Engineering</option>
+<option>B.Tech Civil Engineering</option>
+</select>
+</div>
+<div class="input-group">
+<label for="hostel">
+Hostel Required
+</label>
+<select
+id="hostel"
+name="hostel">
+<option>Yes</option>
+<option>No</option>
+</select>
+</div>
+<div class="input-group">
+<label for="transport">
+Transport Required
+</label>
+<select
+id="transport"
+name="transport">
+<option>Yes</option>
+<option>No</option>
+</select>
+</div>
+<div class="input-group full-width">
+<label>
+<input
+type="checkbox"
+id="declaration"
+required>
+I hereby declare that the information provided above is true and correct to the best of my knowledge.
+</label>
+</div>
+<div class="button-container">
+<button type="submit"id="submitBtn">
+Submit 
+</button>
+</div>
+</div>
+</div>
+</form>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script>
+emailjs.init("PrQb-GTKB6FNdnKaR");
+</script>
+<script src="script.js"></script>
+</body>
+</html>

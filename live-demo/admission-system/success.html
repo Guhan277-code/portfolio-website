@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Application Submitted Successfully</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+<div class="success-card">
+<div class="header">
+<div class="success-icon">
+✓
+</div>
+<h1 class="success-title">
+Application Submitted Successfully!
+</h1>
+<p class="success-message">
+Thank you for submitting your admission application.
+Your application has been received successfully.
+</p>
+</div>
+<div class="section-title">
+<h2>Submission Details</h2>
+</div>
+<div class="success-details">
+<div class="input-group">
+<label>Application Status</label>
+<input
+type="text"
+value="Submitted Successfully"
+readonly>
+</div>
+<div class="input-group">
+<label>Application ID</label>
+<input
+type="text"
+id="applicationId"
+readonly>
+</div>
+<div class="input-group">
+<label>Date</label>
+<input
+type="text"
+id="todayDate"
+readonly>
+</div>
+<div class="input-group">
+<label>Time</label>
+<input
+type="text"
+id="currentTime"
+readonly>
+</div>
+<div class="input-group full-width">
+<label>Message</label>
+<textarea readonly rows="5">
+Congratulations!
+Your application has been submitted successfully.
+Our admission team will review your application.
+You will be contacted through your registered Email ID or Mobile Number.
+Thank you for choosing our institution.
+</textarea>
+</div>
+</div>
+<div class="button-container">
+<a href="index.html" class="home-button">
+Back to Home
+</a>
+</div>
+</div>
+</div>
+<script>
+document.getElementById("applicationId").value =
+localStorage.getItem("applicationId");
+</script>
+<script>
+const now=new Date();
+document.getElementById("todayDate").value=now.toLocaleDateString();
+document.getElementById("currentTime").value=now.toLocaleTimeString();
+</script>
+</body>
+</html>
