@@ -601,7 +601,7 @@ function initAIAssistant(){
     if(typeof GK_PROFILE === "undefined") return "I can only answer questions about my portfolio.";
 
     // certificates
-    if(/certificat|webinar|bug.?bounty|bootcamp|cappriciosec/.test(q)){
+    if(/certificat|webinar|bug.?bounty|bootcamp|cappriciosec|mongodb|nosql|database/.test(q)){
       if(/webinar|career/.test(q)){
         const c = GK_CERTIFICATES.find(c => c.id === "cybersecurity-webinar-101");
         return `${c.title} (${c.issuer}, ${c.date}): ${c.description}`;
@@ -610,7 +610,11 @@ function initAIAssistant(){
         const c = GK_CERTIFICATES.find(c => c.id === "linux-bugbounty-bootcamp");
         return `${c.title} (${c.issuer}, ${c.date}): ${c.description}`;
       }
-      return `I hold two certificates so far, both from Cappriciosec University: "${GK_CERTIFICATES[0].title}" and "${GK_CERTIFICATES[1].title}", completed on ${GK_CERTIFICATES[0].date}. These are basic, foundational-level certificates — I'm still early in my cybersecurity journey and actively working toward Cisco certifications and the free Google career certificates next.`;
+      if(/mongodb|nosql|database/.test(q)){
+        const c = GK_CERTIFICATES.find(c => c.id === "mongodb-basics");
+        return `${c.title} (${c.issuer}, ${c.date}): ${c.description}`;
+      }
+      return `I hold three certificates so far: two cybersecurity-focused ones from Cappriciosec University — "${GK_CERTIFICATES[0].title}" and "${GK_CERTIFICATES[1].title}" — and one on databases, "${GK_CERTIFICATES[2].title}" from MongoDB, Inc. These are all foundational-level certificates — I'm still early in my journey and actively working toward Cisco certifications and the free Google career certificates next.`;
     }
 
     // specific projects

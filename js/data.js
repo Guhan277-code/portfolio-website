@@ -409,5 +409,23 @@ const GK_CERTIFICATES = [
       attack techniques — Burp Suite usage, reconnaissance, injection vulnerabilities and
       Server-Side Request Forgery (SSRF) — spanning both practical and theoretical sides of
       web application security.`
+  },
+  {
+    id: "mongodb-basics",
+    title: "MongoDB Basics for Students",
+    subtitle: "NoSQL Fundamentals — Documents, Collections & Queries",
+    issuer: "MongoDB, Inc.",
+    date: "12 Aug 2026",
+    credentialId: "MDB9wejwwinip",
+    image: "images/certificates/cert3-mongodb.jpg",
+    description: `Covers the fundamentals of MongoDB and NoSQL document databases —
+      collections, documents, CRUD operations and basic querying, taught through
+      MongoDB's official student program. This isn't a cybersecurity certificate — it's a
+      database one, and it rounds out my growing data skillset alongside the relational,
+      SQL-based work I'd already done (MySQL in my Bank Management System, Supabase/Postgres
+      in my admission system). Having hands-on grounding in both SQL and NoSQL approaches to
+      data matters for the security path I'm on too: understanding how a database is actually
+      structured and queried is exactly what's needed to recognise and prevent
+      injection-style vulnerabilities later on.`
   }
 ];

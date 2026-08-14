@@ -325,6 +325,63 @@ section{ position:relative; padding:100px 0; }
 .orbit-node.n3{ bottom:8%; left:14%; }
 
 /* ---------------------------------------------------------------------- */
+/* ABOUT PAGE — animated portrait photo                                    */
+/* ---------------------------------------------------------------------- */
+.about-photo-wrap{ display:flex; justify-content:center; align-items:center; position:relative; padding:20px; }
+.about-photo-orbit{
+  position:relative; width:min(320px,78vw);
+  animation:float 6s ease-in-out infinite;
+}
+.about-photo-ring{
+  position:absolute; inset:-22px; border-radius:32px;
+  border:1px dashed var(--border-strong);
+  animation:spin-slow 22s linear infinite;
+}
+.about-photo-ring.r2{
+  inset:-40px; border-radius:40px;
+  border-color:rgba(34,211,238,0.2);
+  animation-duration:30s; animation-direction:reverse;
+}
+@keyframes spin-slow{ to{ transform:rotate(360deg); } }
+.about-photo-frame{
+  position:relative; z-index:2; padding:7px; border-radius:26px;
+  background:linear-gradient(145deg,var(--primary),var(--signal));
+  box-shadow:0 24px 70px -18px var(--primary-dim), 0 0 0 1px rgba(255,255,255,0.04);
+}
+.about-photo-frame .inner{
+  border-radius:20px; overflow:hidden; position:relative;
+  background:var(--panel);
+}
+.about-photo-frame img{
+  display:block; width:100%; aspect-ratio:3/4;
+  object-fit:cover; object-position:top center;
+  filter:saturate(1.05) contrast(1.03);
+  transition:transform .6s var(--ease);
+}
+.about-photo-frame:hover img{ transform:scale(1.045); }
+.about-photo-sheen{
+  position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(200deg, rgba(255,255,255,0.10), transparent 40%);
+}
+.about-photo-node{
+  position:absolute; width:11px; height:11px; border-radius:50%;
+  background:var(--signal); box-shadow:0 0 16px var(--signal); z-index:3;
+  animation:pulse-node 3s ease-in-out infinite;
+}
+.about-photo-node.n1{ top:4%; left:-6px; }
+.about-photo-node.n2{ top:55%; right:-10px; background:var(--primary-light); box-shadow:0 0 16px var(--primary-light); animation-delay:.6s; }
+.about-photo-node.n3{ bottom:8%; left:8%; animation-delay:1.2s; }
+@keyframes pulse-node{ 0%,100%{ transform:scale(1); opacity:.9; } 50%{ transform:scale(1.5); opacity:.4; } }
+.about-photo-badge{
+  position:absolute; left:50%; bottom:-20px; transform:translateX(-50%);
+  z-index:4; padding:10px 20px; border-radius:12px;
+  font-family:var(--font-mono); font-size:12.5px; letter-spacing:.04em;
+  white-space:nowrap; text-align:center;
+}
+.about-photo-badge b{ color:var(--text-hi); font-weight:600; }
+.about-photo-badge span{ display:block; color:var(--signal); font-size:11px; margin-top:2px; }
+
+/* ---------------------------------------------------------------------- */
 /* CARDS — generic content card                                           */
 /* ---------------------------------------------------------------------- */
 .chip{
