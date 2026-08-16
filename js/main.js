@@ -383,6 +383,9 @@ function renderProjectDetail(){
       <span style="display:block;text-align:left;color:var(--text-mid);font-size:13.5px;">${v}</span>
     </div>`).join("");
 
+  let secCounter = 0;
+  const nextNum = () => String(++secCounter).padStart(2, "0");
+
   holder.innerHTML = `
     <div class="container-xl detail-hero">
       <div class="breadcrumb-min"><a href="projects.html">Projects</a> / ${p.title}</div>
@@ -401,52 +404,53 @@ function renderProjectDetail(){
         <div class="col-lg-8">
 
           <div class="detail-section reveal">
-            <h3><span class="num">01</span>Purpose</h3>
+            <h3><span class="num">${nextNum()}</span>Purpose</h3>
             <p>${p.purpose}</p>
           </div>
 
           <div class="detail-section reveal">
-            <h3><span class="num">02</span>Features</h3>
+            <h3><span class="num">${nextNum()}</span>Features</h3>
             <ul class="feature-list">${p.features.map(f => `<li>${f}</li>`).join("")}</ul>
           </div>
 
           <div class="detail-section reveal">
-            <h3><span class="num">03</span>Workflow</h3>
+            <h3><span class="num">${nextNum()}</span>Workflow</h3>
             <ul class="feature-list" style="grid-template-columns:1fr;">
               ${p.workflow.map((w, i) => `<li><b style="color:var(--signal);margin-right:4px;">${i+1}.</b>${w}</li>`).join("")}
             </ul>
           </div>
 
           <div class="detail-section reveal">
-            <h3><span class="num">04</span>Technologies Used</h3>
+            <h3><span class="num">${nextNum()}</span>Technologies Used</h3>
             <div class="glass" style="padding:6px 26px;">${techRows}</div>
           </div>
 
           ${p.security ? `
           <div class="detail-section reveal">
-            <h3><span class="num">05</span>Security Note</h3>
+            <h3><span class="num">${nextNum()}</span>Security Note</h3>
             <p>${p.security}</p>
           </div>` : ""}
 
           <div class="detail-section reveal">
-            <h3><span class="num">${p.security ? "06" : "05"}</span>Code Snippet</h3>
+            <h3><span class="num">${nextNum()}</span>Code Snippet</h3>
             <div class="code-block">${escapeHtml(p.code_snippet || "")}</div>
           </div>
 
           ${p.gallery && p.gallery.length ? `
           <div class="detail-section reveal">
-            <h3><span class="num">${p.security ? "07" : "06"}</span>Screenshots</h3>
+            <h3><span class="num">${nextNum()}</span>Screenshots</h3>
             <div class="detail-gallery">
               ${p.gallery.map(g => `<img src="${g}" alt="${p.title} screenshot" data-lightbox="${g}">`).join("")}
             </div>
           </div>` : ""}
 
+          ${p.future && p.future.length ? `
           <div class="detail-section reveal">
-            <h3><span class="num">${p.security ? "08" : "07"}</span>Future Improvements</h3>
+            <h3><span class="num">${nextNum()}</span>Future Improvements</h3>
             <ul class="feature-list" style="grid-template-columns:1fr;">
-              ${(p.future || []).map(f => `<li>${f}</li>`).join("")}
+              ${p.future.map(f => `<li>${f}</li>`).join("")}
             </ul>
-          </div>
+          </div>` : ""}
 
         </div>
 
@@ -635,7 +639,7 @@ function initAIAssistant(){
       return `${p.title}: ${p.purpose}`;
     }
     if(/library/.test(q)){
-      const p = GK_PROJECTS.find(x => x.id === "library-details");
+      const p = GK_PROJECTS.find(x => x.id === "library-management-system");
       return `${p.title}: ${p.purpose}`;
     }
     if(/article/.test(q)){
@@ -647,7 +651,7 @@ function initAIAssistant(){
       return `${p.title}: ${p.purpose}`;
     }
     if(/project/.test(q)){
-      return `I've built ${GK_PROJECTS.length} projects, headlined by the College Admission Registration System (Supabase + EmailJS + live admin dashboard). The others are the Bank Management System, Library Details Management System, Hospital Management System, an Online Article Website, and a School Timetable Website. Ask me about any one by name!`;
+      return `I've built ${GK_PROJECTS.length} projects, headlined by the College Admission Registration System (Supabase + EmailJS + live admin dashboard). The others are the Bank Management System, Library Management System, Hospital Management System, an Online Article Website, and a School Timetable Website. Ask me about any one by name!`;
     }
 
     // skills / languages

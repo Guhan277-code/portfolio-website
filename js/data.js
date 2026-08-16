@@ -212,51 +212,80 @@ while (rs.next()) {
     links: { demo: null, details: "project-detail.html?id=bank-management" }
   },
   {
-    id: "library-details",
+    id: "library-management-system",
     featured: false,
-    title: "Library Details Management System",
-    tagline: "A core-Java OOP console program that captures and displays details for a catalogue of library books.",
+    title: "Library Management System",
+    tagline: "A console-based Java + JDBC application with login, full CRUD, and MySQL-backed book issue/return tracking.",
     cover: null,
-    codeLang: "Java · OOP",
-    tech: ["Java", "OOP"],
-    purpose: `A foundational object-oriented programming project I wrote: a dedicated "values" class
-      encapsulates book data (ID, name, author, category) for five books, with clean separation
-      between data-capture and data-display responsibilities.`,
+    codeLang: "Java · JDBC · MySQL",
+    tech: ["Java", "JDBC", "MySQL"],
+    purpose: `A step up from my earlier OOP-only library project — this is a full console-based Library
+      Management System that logs a librarian in, then drives every operation (add, update, delete,
+      search, issue and return books) straight against a live MySQL database over JDBC, with real
+      transaction handling for the issue/return workflow instead of just reading data back out.`,
     features: [
-      "Custom \"values\" class modeling book records as object fields",
-      "Scanner-based interactive data entry for 5 books",
-      "Dedicated getDetails() method for input, separate from showDetails() for output",
-      "Formatted console output with clear section dividers",
-      "Demonstrates core OOP principles: encapsulation and single-responsibility methods"
+      "Hardcoded login screen gating access to the dashboard",
+      "9-option console dashboard: Add, Update, Delete, Search, Issue, Return, View All Books, View Issued Books, Exit",
+      "Add / Update / Delete Book — full CRUD against the \"books\" table",
+      "Search Book — partial-match search by title or author using SQL LIKE",
+      "Issue Book — checks available copies, decrements available_quantity and logs a row in \"issued_books\", wrapped in a manual commit/rollback transaction",
+      "Return Book — marks an issue record RETURNED and increments available_quantity back, also transactional",
+      "View All Books and View Issued Books — live-formatted table output straight from MySQL",
+      "Every query goes through PreparedStatement — no raw string-concatenated SQL, so it's SQL-injection safe by construction",
+      "Layered structure: model / dao / database / service / util packages, not one giant class"
     ],
     workflow: [
-      "Program starts and instantiates a \"values\" object.",
-      "getDetails() walks the user through entering ID, name, author and category for 5 books via Scanner.",
-      "showDetails() then prints every book back out in a clean, bordered format under a library header."
+      "Program starts, DBConnection opens a JDBC connection to the local library_db MySQL database.",
+      "Menu.java shows the login screen; hardcoded admin credentials gate entry to the dashboard.",
+      "LibraryService prints the 9-option dashboard and reads the librarian's menu choice in a loop.",
+      "Each option delegates to BookDAO, which builds a PreparedStatement and executes it against MySQL.",
+      "Issue Book and Return Book run as explicit transactions: check state, update books, insert/update issued_books, then commit — or rollback on any failure.",
+      "Results are formatted and printed straight back to the console; the loop continues until the librarian chooses Exit."
     ],
     technologies: {
-      "Language": "Core Java",
-      "Concepts": "Object-oriented design (a dedicated data class), java.util.Scanner for interactive I/O"
+      "Language": "Java (JDK)",
+      "IDE": "Visual Studio Code, with the Extension Pack for Java",
+      "Database": "MySQL — a library_db schema with books and issued_books tables",
+      "Driver": "MySQL Connector/J (mysql-connector-j-9.7.0.jar), loaded via JDBC",
+      "Pattern": "Layered architecture (model / dao / database / service / util) with PreparedStatement everywhere and manual commit/rollback transactions for issue & return"
     },
-    future: [
-      "Replace the fixed 5-book limit with a dynamic ArrayList<Book>",
-      "Persist records to a file or database instead of holding them only in memory",
-      "Add search and borrow/return tracking"
-    ],
-    code_snippet: `class values {
-  int bid1; String b1, a1, c1;
-  void getDetails(Scanner sc) {
-    System.out.println("Enter First book ID:");
-    bid1 = sc.nextInt();
-    ...
-  }
-  void showDetails() {
-    System.out.println("BOOK ID\\t:" + bid1);
-    ...
-  }
+    code_snippet: `public boolean issueBook(int bookId, String borrowerName) {
+    String checkSql  = "SELECT available_quantity FROM books WHERE id = ?";
+    String updateSql = "UPDATE books SET available_quantity = available_quantity - 1 WHERE id = ?";
+    String insertSql = "INSERT INTO issued_books (book_id, borrower_name, issue_date, status) " +
+                        "VALUES (?, ?, CURDATE(), 'ISSUED')";
+
+    Connection con = DBConnection.getConnection();
+    con.setAutoCommit(false);
+    try {
+        int available = 0;
+        try (PreparedStatement checkPs = con.prepareStatement(checkSql)) {
+            checkPs.setInt(1, bookId);
+            ResultSet rs = checkPs.executeQuery();
+            if (rs.next()) available = rs.getInt("available_quantity");
+        }
+        if (available <= 0) { con.rollback(); return false; }
+
+        try (PreparedStatement updatePs = con.prepareStatement(updateSql)) {
+            updatePs.setInt(1, bookId);
+            updatePs.executeUpdate();
+        }
+        try (PreparedStatement insertPs = con.prepareStatement(insertSql)) {
+            insertPs.setInt(1, bookId);
+            insertPs.setString(2, borrowerName);
+            insertPs.executeUpdate();
+        }
+        con.commit();
+        return true;
+    } catch (SQLException e) {
+        con.rollback();
+        return false;
+    } finally {
+        con.setAutoCommit(true);
+    }
 }`,
-    gallery: ["images/outputs/library-output.png"],
-    links: { demo: null, details: "project-detail.html?id=library-details" }
+    gallery: ["images/outputs/library-management-collage.jpg"],
+    links: { demo: null, details: "project-detail.html?id=library-management-system" }
   },
   {
     id: "hospital-management",
