@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://guhan-web.netlify.app/sitemap.xml
