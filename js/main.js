@@ -650,8 +650,12 @@ function initAIAssistant(){
       const p = GK_PROJECTS.find(x => x.id === "school-timetable");
       return `${p.title}: ${p.purpose}`;
     }
+    if(/moon.?garden|moon garden/.test(q)){
+      const p = GK_PROJECTS.find(x => x.id === "moon-garden");
+      return `${p.title}: ${p.purpose}`;
+    }
     if(/project/.test(q)){
-      return `I've built ${GK_PROJECTS.length} projects, headlined by the College Admission Registration System (Supabase + EmailJS + live admin dashboard). The others are the Bank Management System, Library Management System, Hospital Management System, an Online Article Website, and a School Timetable Website. Ask me about any one by name!`;
+      return `I've built ${GK_PROJECTS.length} projects, headlined by the College Admission Registration System (Supabase + EmailJS + live admin dashboard). The others are the Bank Management System, Library Management System, Hospital Management System, an Online Article Website, a School Timetable Website, and Moon Garden — a creative, animated front-end piece. Ask me about any one by name!`;
     }
 
     // skills / languages

@@ -370,6 +370,22 @@ while (rs.next()) {
       "Replace <center> tags with modern flexbox/grid centering",
       "Make the layout responsive for mobile screens"
     ],
+    code_snippet: `<div style="text-align:left;color:tomato;margin:40px;">
+  Description:
+</div>
+<div style="text-align:justify;width:1200px;">
+  <b>Hypertext Markup Language (HTML)</b> is the foundational backbone of
+  the World Wide Web, serving as the standard markup language used to
+  structure and display content online. <b>Originally developed by
+  Sir Tim Berners-Lee in 1990</b>, HTML acts as a web page's
+  architectural blueprint...
+</div>
+
+<address style="text-align:left;">
+  NAME: GUHAN<br>
+  ADDRESS: PONDICHERRY<br>
+  DATE: 09.06.2026<br>
+</address>`,
     gallery: ["images/projects/article-screenshot.png"],
     links: { demo: null, details: "project-detail.html?id=article-website" }
   },
@@ -405,8 +421,90 @@ while (rs.next()) {
       "Add a responsive/mobile view (card-based day view instead of a wide table)",
       "Add a print-friendly stylesheet"
     ],
+    code_snippet: `<table border="2">
+  <tr>
+    <th>Day/Hour</th><th>8:30-9:00</th><th>9:00-9:45</th><th>9:45-10:30</th>
+    <th>10:30-10:45</th><th>10:45-11:30</th><th>11:30-12:15</th><th>12:15-1:10</th>
+    <th>1:10-1:55</th><th>1:55-2:45</th><th>2:45-2:55</th><th>2:55-3:40</th><th>3:40-4:20</th>
+  </tr>
+  <tr>
+    <td><b>Monday</b></td>
+    <td>Moral/Catechism</td>
+    <td>Physics</td>
+    <td>Chemistry</td>
+    <td>Break</td>
+    <td>Computer Science</td>
+    <td>English</td>
+    <td>Lunch</td>
+    <td colspan="2">Computer Science Lab</td>
+    <td>Break</td>
+    <td>Maths</td>
+    <td>Physics</td>
+  </tr>
+  <!-- Tuesday–Friday rows follow the same pattern, each with its own subject order -->
+</table>`,
     gallery: ["images/projects/timetable-screenshot.png"],
     links: { demo: null, details: "project-detail.html?id=school-timetable" }
+  },
+  {
+    id: "moon-garden",
+    featured: false,
+    title: "Moon Garden",
+    tagline: "A moonlit-garden scene where a glowing moon hands out a random uplifting quote and flowers bloom on click.",
+    cover: null,
+    codeLang: "HTML5 · CSS3 · JavaScript",
+    tech: ["HTML5", "CSS3", "JavaScript"],
+    purpose: `Moon Garden is a creative web project designed with a visually appealing moonlit garden theme,
+      focusing on interactive elements, modern styling, and a smooth user experience. It's a small, self-contained
+      piece of front-end storytelling rather than a data-driven system — the whole point was to see how much
+      atmosphere and personality a page can have with nothing but a gradient sky, a handful of DOM listeners
+      and a bit of CSS animation, no frameworks or backend involved.`,
+    features: [
+      "Clickable moon that glows brighter (bigger box-shadow) and reveals a random uplifting quote on every click",
+      "Six-quote pool cycled with Math.random(), so the moon's message keeps changing across clicks",
+      "Hand-placed starfield with a looping CSS keyframe twinkle animation (scale + opacity pulsing)",
+      "Row of flower emojis that \"bloom\" — scale up and rotate — when clicked, toggled on and off via classList",
+      "Two-band scene layout: a gradient night sky on top, a solid green ground strip below, for a clean illustrative split",
+      "Zero dependencies — pure HTML, CSS and vanilla JavaScript"
+    ],
+    workflow: [
+      "Page loads showing the gradient night sky, the moon, six twinkling stars and a \"Click the moon\" prompt over the flower bed.",
+      "The stars run an independent CSS keyframe animation on a loop the entire time, giving the sky constant subtle motion.",
+      "Clicking the moon fires a click listener that boosts its box-shadow glow and swaps in a random quote from a fixed array.",
+      "Clicking any flower toggles a \"bloom\" class on just that flower, scaling and rotating it — clicking again reverses it."
+    ],
+    technologies: {
+      "Structure": "Semantic-ish HTML5 laid out as two full-width scene bands (sky and ground)",
+      "Styling": "CSS3 — linear-gradient sky background, @keyframes twinkle animation, transform-based bloom transitions on the flowers",
+      "Interactivity": "Vanilla JavaScript — document.querySelector(All), addEventListener, classList.toggle, Math.random() for the quote picker"
+    },
+    future: [
+      "Add a gentle ambient-sound toggle to match the night-garden mood",
+      "Make the flower row wrap responsively on small screens instead of a fixed gap row",
+      "Let visitors submit their own quotes for the moon to hand out"
+    ],
+    code_snippet: `const moon = document.getElementById("moon");
+const quote = document.getElementById("quote");
+const quotes = [
+  "Believe in yourself ✨",
+  "Dream Big 🌙",
+  "Keep Growing 🌸",
+  "Stay Positive 💙",
+  "Every Star Shines ⭐",
+  "Smile, Tomorrow is Beautiful 😊"
+];
+
+moon.addEventListener("click", function () {
+  moon.style.boxShadow = "0 0 80px white";
+  quote.innerHTML = quotes[Math.floor(Math.random() * quotes.length)];
+});
+
+document.querySelectorAll(".flower").forEach(function (flower) {
+  flower.addEventListener("click", function () {
+    flower.classList.toggle("bloom");
+  });
+});`,
+    links: { demo: null, details: "project-detail.html?id=moon-garden" }
   }
 ];
 
