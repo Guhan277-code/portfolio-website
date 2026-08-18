@@ -80,8 +80,8 @@ const GK_EDUCATION = [
   {
     when: "Ongoing",
     title: "Independent Certifications",
-    org: "Cappriciosec University",
-    desc: "I completed the Cybersecurity Career Webinar 101 and the Linux & Web Bug-Bounty Bootcamp alongside my first-year coursework, to start building a security specialization early."
+    org: "Cappriciosec University · MongoDB, Inc.",
+    desc: "I completed the Cybersecurity Career Webinar 101 and the Linux & Web Bug-Bounty Bootcamp through Cappriciosec University, and MongoDB Basics for Students through MongoDB, Inc. — stacking both security fundamentals and database fundamentals alongside my first-year coursework."
   }
 ];
 
@@ -89,6 +89,8 @@ const GK_ABOUT_TIMELINE = [
   { when: "2026", title: "Started B.Tech IT at SMVEC", desc: "I began the Information Technology program, picking up HTML, CSS, JavaScript, Bootstrap, Java, Python and C." },
   { when: "May 2026", title: "Completed two Cappriciosec University programs", desc: "I completed the Cybersecurity Career Webinar 101 and the Linux & Web Bug-Bounty Bootcamp — my first formal steps into security." },
   { when: "2026", title: "Shipped the College Admission Registration System", desc: "I shipped a full production-style project: Supabase database, EmailJS automated notifications, and a live admin dashboard." },
+  { when: "2026", title: "Built Moon Garden", desc: "A small, self-contained creative front-end project — an animated moonlit garden scene with vanilla JavaScript interactivity — built to explore atmosphere and polish with zero frameworks or backend." },
+  { when: "Aug 2026", title: "Completed MongoDB Basics for Students", desc: "I earned a certificate from MongoDB, Inc. covering NoSQL fundamentals, rounding out my database skillset alongside the SQL/relational work in my other projects." },
   { when: "Now", title: "Bridging web development with security", desc: "I'm applying secure-coding thinking to my existing projects and exploring my next build with a security-first lens." }
 ];
 
@@ -451,7 +453,7 @@ while (rs.next()) {
     featured: false,
     title: "Moon Garden",
     tagline: "A moonlit-garden scene where a glowing moon hands out a random uplifting quote and flowers bloom on click.",
-    cover: null,
+    cover: "images/outputs/moon-garden-cover.jpg",
     codeLang: "HTML5 · CSS3 · JavaScript",
     tech: ["HTML5", "CSS3", "JavaScript"],
     purpose: `Moon Garden is a creative web project designed with a visually appealing moonlit garden theme,
@@ -504,6 +506,7 @@ document.querySelectorAll(".flower").forEach(function (flower) {
     flower.classList.toggle("bloom");
   });
 });`,
+    gallery: ["images/outputs/moon-garden-screenshot.jpg"],
     links: { demo: null, details: "project-detail.html?id=moon-garden" }
   }
 ];
